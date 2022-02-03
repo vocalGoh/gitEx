@@ -24,6 +24,7 @@
 			<a href="#" onclick="javascript:memo_view('${row.idx}')">
 			${row.memo}
 			</a>
+			<!-- 코드를 추가하면? -->
 		</td>
 		<td>${row.post_date}</td>
 	</tr>
