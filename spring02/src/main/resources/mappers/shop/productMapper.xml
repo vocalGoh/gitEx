@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="product">
+ <select id="product_list" resultType="com.example.spring02.model.shop.dto.ProductDTO">
+  select * from product
+  order by product_name
+ </select>
+ 
+ 
+ 
+ <!-- 13-4. 제품의 편집을 위해 제품의 상세정보를 가져오는 SQL문 -->
+ <select id="detail_product" resultType="com.example.spring02.model.shop.dto.ProductDTO">
+  select * from product
+  where product_id=#{product_id}
+ </select>
+ <!-- 13-5번으로 복귀 -->
+ 
+ 
+ 
+ 
+ <!-- 12-9. 상품 등록. 여기에 미리 product 테이블에 관한 시퀀스가 만들어져 있어야함. -->
+ <insert id="insert">
+  insert into product values
+  (seq_product.nextval,#{product_name}, #{price}, 
+  #{description}, #{picture_url})
+ </insert>
+ <!-- 12-8번으로 복귀 -->
+ 
+ 
+ 
+ 
+ 
+ <!-- 13-12. 상품정보 수정 : 13-11번으로 복귀-->
+ <update id="update_product">
+  update product
+  set
+   product_name=#{product_name},
+   price=#{price},
+   description=#{description},
+   picture_url=#{picture_url}
+  where product_id=#{product_id}
+ </update>
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ <!-- 14-4. 첨부파일 이름 가져오기 : 14-3번으로 복귀 -->
+ <select id="fileInfo" resultType="String">
+  select picture_url from product
+  where product_id=#{product_id}
+ </select>
+ 
+ <!-- 14-5. 상품레코드 삭제 : 14-4번으로 복귀-->
+ <delete id="product_delete">
+  delete from product
+  where product_id=#{product_id}
+ </delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
+
+
